@@ -2,7 +2,6 @@
 
 A collection of Claude Code skills for disciplined, high-quality development workflows.
 
-
 ---
 
 ## Skills
@@ -17,7 +16,7 @@ Then it fixes it using the same disciplined step-by-step workflow.
 2. **Screenshot** — requests visual evidence for any UI/UX issue
 3. **Verify** — confirms the evidence matches the described symptoms
 4. **Analyze** — identifies root cause, presents findings, waits for your agreement
-5. **Fix** — full step-by-step plan → execute → subagent review → tests → summary
+5. **Fix** — full step-by-step plan → execute → optional review → tests → summary
 
 **Trigger:** `/step-by-step-debug`
 **Exit:** `/done` or "just fix it"
@@ -34,7 +33,7 @@ Transforms Claude into a disciplined, methodical developer that never rushes. In
 4. **Proposes test scenarios** — derives a list of test cases from the actual changes made, gets your approval, then writes them one at a time
 5. **Generates a change summary** — produces a clean summary of everything changed, suitable for use as a PR description
 
-Also manages context automatically — compacts at 40% usage to keep sessions running smoothly.
+Prompts you to run `/compact` at natural checkpoints to keep long sessions sharp.
 
 **Trigger:** `/step-by-step`  
 **Exit:** `/done` or "just finish it"
@@ -74,6 +73,17 @@ Then restart Claude Code. Type `/step-by-step` to activate.
 
 - Claude Code v2.1.145 or later
 - Any paid Anthropic plan (Pro, Max, Team, or Enterprise)
+
+---
+
+## Credits
+
+Both skills bundle a `ubiquitous-language` reference sub-skill (used to build and maintain a
+`UBIQUITOUS_LANGUAGE.md` domain glossary). This was taken directly from Matt Pocock's skills
+collection — full credit to the original author:
+
+- Original source: [mattpocock/skills — ubiquitous-language](https://github.com/mattpocock/skills/blob/main/skills/deprecated/ubiquitous-language/SKILL.md)
+- Repository: [github.com/mattpocock/skills](https://github.com/mattpocock/skills)
 
 ---
 
