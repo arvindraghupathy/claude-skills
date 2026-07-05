@@ -47,7 +47,7 @@ Also manages context automatically — compacts at 40% usage to keep sessions ru
 **Personal install (all projects):**
 
 ```bash
-npx skills add YOUR_GITHUB_USERNAME/YOUR_REPO_NAME
+npx skills add arvindraghupathy/claude-skills
 ```
 
 Or manually:
