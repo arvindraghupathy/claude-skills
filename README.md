@@ -2,7 +2,6 @@
 
 A collection of Claude Code skills for disciplined, high-quality development workflows.
 
-[![skills.sh](https://skills.sh/b/arvindraghupathy/claude-skills)](https://skills.sh/arvindraghupathy/claude-skills)
 
 ---
 
