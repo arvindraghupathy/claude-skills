@@ -2,7 +2,7 @@
 
 A collection of Claude Code skills for disciplined, high-quality development workflows.
 
-[![skills.sh](https://skills.sh/b/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME)](https://skills.sh/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME)
+[![skills.sh](https://skills.sh/b/arvindraghupathy/claude-skills)](https://skills.sh/arvindraghupathy/claude-skills)
 
 ---
 
