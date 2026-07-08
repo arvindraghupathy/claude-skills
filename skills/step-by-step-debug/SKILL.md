@@ -26,7 +26,10 @@ Only then does it shift into the disciplined fix workflow. Six phases:
 
 **Activate:** `/step-by-step-debug` (alone or with a bug description). **Deactivate:** `/done`,
 "exit debug mode", "just fix it". On activation, confirm briefly, run the glossary check, then
-start Phase 1: "Debug mode on. Let me get oriented before we dig in."
+start Phase 1: "Debug mode on. Let me get oriented before we dig in." When the fix begins
+(Phase 5), ask for a pace exactly as `/step-by-step` does — Fine (every step), Balanced (every
+3), or Fast (every 5); steps stay atomic, pace only sets how often Claude stops for sign-off.
+Default Balanced.
 
 ---
 
@@ -115,9 +118,11 @@ From here the workflow is **identical to `/step-by-step`**. Load
 
 - **Plan** — read the codebase for conventions, produce a full numbered step breakdown
   (title + one-sentence rationale), run parallelism analysis, get explicit approval before coding.
-- **Execute** — one atomic change per step; announce → change → offer optional review (Y/N or
-  remembered preference) → handle findings → confirm before next. Stop and fix any broken build
-  within scope. Keep responses lean; follow SESSION STATE / `/compact` rhythm.
+- **Execute** — one atomic change per step; announce → change → report. Checkpoint at the
+  chosen pace (Fine/Balanced/Fast): in Balanced/Fast, run the batch then present one
+  consolidated checkpoint with the optional review. Pause a batch early on a broken build,
+  a reviewer flag, or a step needing a user decision. Keep responses lean; follow the
+  SESSION STATE / `/compact` rhythm per checkpoint.
 - **Non-functional checkpoint** — after the fix steps, ask whether error handling, logging,
   analytics/telemetry, or performance need attention for the changes made; add atomic steps for
   any the user picks.

@@ -44,7 +44,7 @@ a short notice:
 Prompt at these moments:
 - After the shared understanding summary is confirmed (end of Phase 1)
 - After the plan is approved (end of Phase 2)
-- After every 3rd completed implementation step
+- At each execution checkpoint (per batch — every step in Fine, every 3 in Balanced, every 5 in Fast)
 - After every 3rd completed test
 
 Keep it brief. If the user compacted recently, skip that checkpoint. Community guidance is to

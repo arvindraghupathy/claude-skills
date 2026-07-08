@@ -18,7 +18,7 @@ problem well enough to start coding. Five phases, in order:
 
 1. **Interview** — question the user until both parties agree on what changes and why
 2. **Plan** — decompose into atomic steps; get the full breakdown approved
-3. **Execute** — implement one step at a time, checkpoint after each
+3. **Execute** — implement atomic steps, checkpoint at the user's chosen pace
 4. **Test** — propose test scenarios for approval, then write them
 5. **Summary** — produce a concise record of everything changed
 
@@ -26,8 +26,28 @@ The user is never surprised. Every step is visible, every change reviewable, not
 forward without explicit sign-off.
 
 **Activate:** `/step-by-step` (alone or with a task). **Deactivate:** `/done`, "exit
-step-by-step", "just finish it". On activation, confirm briefly, run the glossary check,
-then start Phase 1. Do not plan or code yet.
+step-by-step", "just finish it". On activation, confirm briefly, ask for a **pace** (below),
+run the glossary check, then start Phase 1. Do not plan or code yet.
+
+### Pace — how often to checkpoint (chosen once at activation)
+
+Steps stay the same size in every pace — small, atomic, reviewable. Pace only changes how
+often Claude stops for sign-off, trading round-trips for speed:
+
+```
+How do you want to pace this?
+  • Fine — stop after every step (most control)
+  • Balanced — stop after every 3 steps
+  • Fast — stop after every 5 steps
+You can switch anytime by saying "go fine/balanced/fast".
+```
+
+Default to Balanced if the user doesn't choose. In Balanced/Fast, execute the batch of steps
+in sequence — each still announced and each still one atomic change — then present a single
+consolidated checkpoint covering all steps in the batch before continuing. A batch always
+pauses early if a step breaks the build, the reviewer (if on) flags an issue, or a step turns
+out to depend on a decision the user should make. The non-functional checkpoint, test phase,
+and summary are unaffected by pace.
 
 ---
 
@@ -109,17 +129,25 @@ Prompt `/compact` after approval.
 
 ---
 
-## Phase 3: Execute — One Step at a Time
+## Phase 3: Execute — Atomic Steps, Paced Checkpoints
 
 Load `references/execution-and-review.md` and `references/context-management.md` now.
 
-For each step: announce it, make **one atomic change**, report what changed, then offer the
-optional code review (Y/N, or the remembered per-session preference). Handle any reviewer
-findings, then stop and wait for the user before the next step. Keep responses lean and follow
-the SESSION STATE / `/compact` prompting rhythm from the context reference.
+Each step is always **one atomic change** — announced, made, and reported. What the chosen
+pace controls is *when Claude stops for sign-off*: after every step (Fine), every 3 (Balanced),
+or every 5 (Fast).
 
-One logical concern per step — never bundle. No "while I'm at it" changes. If a change breaks
-the build, stop and fix within scope before continuing.
+- **Fine:** report the step, offer the optional review, then wait before the next.
+- **Balanced / Fast:** execute the batch in sequence (each step announced and reported as
+  usual), then present one consolidated checkpoint listing every change in the batch and
+  offer the optional review across them. Wait before the next batch.
+
+Pause a batch early — before its size is reached — if a change breaks the build, the reviewer
+flags an issue, or a step hits a decision the user should make. Keep responses lean and prompt
+`/compact` at each checkpoint (i.e. per batch, not per step) using the context reference.
+
+One logical concern per step — never bundle changes into one step. No "while I'm at it"
+changes. If a change breaks the build, stop and fix within scope before continuing.
 
 ### Non-Functional Checkpoint (after all implementation steps, before Phase 4)
 

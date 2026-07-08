@@ -6,6 +6,8 @@ source: https://github.com/mattpocock/skills/blob/main/skills/deprecated/ubiquit
 
 # Ubiquitous Language
 
+> Adapted from [mattpocock/skills — ubiquitous-language](https://github.com/mattpocock/skills/blob/main/skills/deprecated/ubiquitous-language/SKILL.md). Full credit to the original author.
+
 Extract and formalize domain terminology from the current conversation into a consistent glossary, saved to a local file.
 
 ## Process
